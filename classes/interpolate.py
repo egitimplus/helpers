@@ -11,44 +11,38 @@ class Interpolate:
     # linearly
     def linear(self):
         m = (self.y[1]-self.y[0])/(self.x[1]-self.x[0])
-
-        def islem(x_fit):
+        def execute(x_fit):
             return m * (x_fit - self.x[0]) + self.y[0]
-
-        return islem
+        return execute
 
     # logarithmically
     def log(self):
         sumy = np.sum(self.y)
         sumlogx = np.sum(np.log(self.x))
-
         b = (self.x.size * np.sum(self.y * np.log(self.x)) - sumy * sumlogx) / (self.x.size * np.sum(np.log(self.x) ** self._ld) - sumlogx ** self._ld)
         a = (sumy - b * sumlogx) / self.x.size
-        print('log')
-        def islem(xfit):
-            print('mog')
+        def execute(xfit):
             return a + b * np.log(xfit)
-
-        return islem
+        return execute
 
     # exponentially
     def exp(self):
         curve_fit = np.polyfit(self.x, np.log(self.y), 1)
-        def islem(x_fit):
+        def execute(x_fit):
             return np.exp(curve_fit[1]) * np.exp(curve_fit[0] * x_fit)
-        return islem
+        return execute
 
     # Increases the variable by percentage
     def min(self):
-        def islem(x_fit):
+        def execute(x_fit):
             return y[0] + y[0] * x_fit /100
-        return islem
+        return execute
 
     # Decreases the variable by percentage
     def max(self):
-        def islem(x_fit):
+        def execute(x_fit):
             return y[1] - y[1] * x_fit /100
-        return islem
+        return execute
 
     # manipulate fitted value
     def result(self, y_fit):
