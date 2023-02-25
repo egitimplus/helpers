@@ -23,7 +23,6 @@ exp_interpolate = inter.exp()
 print(exp_interpolate(2)) # 0.01174 -> x=2
 print(exp_interpolate(3)) # 0.04597 -> x=3
 
-
 # min: fixed percentage increase
 min_interpolate = inter.min()
 min_interpolate = inter.min()
