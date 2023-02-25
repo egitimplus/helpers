@@ -9,7 +9,7 @@ class Interpolate:
         self.y = y[:2]
 
     # linearly
-    def linear(self):
+    def lin(self):
         m = (self.y[1]-self.y[0])/(self.x[1]-self.x[0])
         def execute(x_fit):
             return m * (x_fit - self.x[0]) + self.y[0]
