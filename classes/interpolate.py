@@ -1,6 +1,9 @@
 import numpy as np
 
 
+import numpy as np
+import pandas as pd
+
 class Interpolate:
     # linear interpolation between two points
     def __init__(self, x, y):
@@ -35,18 +38,27 @@ class Interpolate:
     # Increases the variable by percentage
     def min(self):
         def execute(x_fit):
-            return y[0] + y[0] * x_fit /100
+            if self.y[0] > self.y[1]:
+                return self.y[1] + self.y[1] * x_fit /100
+            else:
+                return self.y[0] + self.y[0] * x_fit /100
         return execute
 
     # Decreases the variable by percentage
     def max(self):
         def execute(x_fit):
-            return y[1] - y[1] * x_fit /100
+            if self.y[0] > self.y[1]:
+                return self.y[0] - self.y[0] * x_fit /100
+            else:
+                return self.y[1] - self.y[1] * x_fit /100
         return execute
 
     # manipulate fitted value
     def result(self, y_fit):
-        return self.y[1] if y_fit > self.y[1] else self.y[0] if y_fit < self.y[0] else y_fit
+        if self.y[0] < self.y[1]:
+            return self.y[1] if y_fit > self.y[1] else self.y[0] if y_fit < self.y[0] else y_fit
+        else:
+            return self.y[0] if y_fit > self.y[0] else self.y[1] if y_fit < self.y[1] else y_fit
 
     # set, get
     @property
