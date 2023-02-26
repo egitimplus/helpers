@@ -1,9 +1,6 @@
 import numpy as np
 
 
-import numpy as np
-import pandas as pd
-
 class Interpolate:
     # linear interpolation between two points
     def __init__(self, x, y):
