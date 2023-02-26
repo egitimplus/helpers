@@ -14,6 +14,7 @@ print(lin_interpolate(2)) # 0.062 -> x=2
 print(lin_interpolate(3)) # 0.121 -> x=3
 
 # log: logaritmic interpolation
+inter.log_degree = 2
 log_interpolate = inter.log()
 print(log_interpolate(2)) # 0.0915 -> x=2
 print(log_interpolate(3)) # 0.1432 -> x=3
